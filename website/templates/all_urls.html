@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}View all URLS{% endblock %}
+
+{% block content %}
+
+{% for urls in user.note %}  <!-- Display Only Current User Urls Data in DB-->
+    <p><b>long URL:</b>{{urls.long}}</p>
+    <p><b>Short URL:</b> {{urls.short}}</p>
+    <hr size="100" width="100%" color="white"> <!-- define Line format-->
+
+    
+{% endfor %}
+<!-- Button add in page to go back page-->
+<input type="button" value="Back to Home" class="btn btn-primary" onclick="history.back()"/>
+{% endblock %}

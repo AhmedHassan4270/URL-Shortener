@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block content %}
+    <h1 align="center"> Your Shortened URL </h1>
+    <input  type="button" value="Back to Home" class="btn btn-primary" onclick="history.back()"/>
+    <p style="text-align:center;"> <b>Previous URL: </b> &nbsp;&nbsp;&nbsp;&nbsp; {{long_url_display}} </p>
+    <p style="text-align:center;"><b>Short URL: </b> &nbsp;&nbsp;&nbsp;&nbsp; http://127.0.0.1:5000/<b>{{short_url_display}}</b> </p>
+    <p style="text-align:center;">You can copy the link above and share it with your friends</p>
+    <hr size="50" width="50%" color="white"> <!-- define Line format-->
+    <!--<a href="http://127.0.0.1:5000/">BACK TO HOME</a> this is 2ndstyle-->
+
+<head>
+    <!--The root URL for Google Chart Infographics is https://chart.googleapis.com/chart. This can be specified with the required parameters to get the desired output.
+        The chs parameter denotes the size of the QR code image in pixels.
+        The cht parameter denotes the type of the image to be created. The value “qr” will be used to generate a QR Code.
+        The chl parameter denotes the text or URL data to be encoded in the QR code.-->
+
+<body>
+    <h6 align="center">Scan QR Code to get the destination,or just scanshort and save it</h6>
+    <div class="container-fluid">
+        <div class="text-center">
+     
+          <!-- Get a Placeholder image initially, this will change according to the data entered later -->
+          <img src="https://chart.googleapis.com/chart?cht=qr&chl=http://127.0.0.1:5000/{{short_url_display}}&chs=220x220&chld=L|0"
+            class="qr-code img-thumbnail img-responsive" />
+        </div>
+    </div>
+</body>
+
+{% endblock %}
+
+
+
+

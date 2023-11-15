@@ -1,0 +1,45 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+
+{% block content %}
+
+<h2 align="center">Welcome to URL Shortener Home Page</h2>
+<h7>&nbsp;</h7>
+<form action="shortner", method="POST">
+  <label for="url"><b>Enter An Long URL:</b></label>
+
+  <input type="url" name="nm" id="url"
+      placeholder="https://example.com"
+      pattern="https://.*" size="120"
+      required>
+  <br>
+  <input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+<!-- button for checked user data in DB -->
+<h3>&nbsp;</h3>
+<form action="all_urls", method="POST">
+  <div align="center">
+    <input type="submit" value="Checked Save URL" class="btn btn-primary">
+  </div>
+</form>
+<h7>&nbsp;</h7>    <!--Used for space-->
+
+<!-- display favourite_url save as a note and delete icon-->
+<h4 align="center">Favourite URL Save In Notes</h4>
+<ul class="list-group list-group-flush" id="notes">
+  {% for favourite_url in user.notes %}
+  <li class="list-group-item">{{ favourite_url.data }}
+    <button type="button" class="close" onClick="deletefavourite_url({{ favourite_url.id }})">
+      <a href="/delete/{{favourite_url.id }}" style="color:rgb(0, 0, 250);">x</a>
+    </button>
+  </li>
+  {% endfor %}
+</ul>
+<form method="POST">
+  <textarea name="favourite_url" id="favourite_url" class="form-control"></textarea>
+  <br />
+  <div align="center">
+    <button type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
+{% endblock %}
